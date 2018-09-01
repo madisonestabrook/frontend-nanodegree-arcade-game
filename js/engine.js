@@ -68,7 +68,8 @@ var Engine = (function(global) {
          */
         if(player.victory === true) { 
             win.cancelAnimationFrame(id);
-            modal.classList.toggle('hide'); 
+            modal.classList.remove('hide');
+            modal.classList.add('show'); 
         }
         else {
              id = win.requestAnimationFrame(main);

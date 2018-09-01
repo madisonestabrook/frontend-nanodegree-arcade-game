@@ -4,3 +4,6 @@ body {
 .hide{ 
     display: none; 
 }
+show { 
+    display: block; 
+}

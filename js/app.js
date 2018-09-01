@@ -3,7 +3,7 @@ var Enemy = function(x,y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     this.x = 0; 
-    this.y = 55; 
+    this.y = y + 55; 
     this.step = 101; 
     this.speed = speed; 
     this.boundary = this.step * 5; 
@@ -37,12 +37,13 @@ Enemy.prototype.update = function(dt) {
 };
  class Hero {
      constructor() { 
-         this.x = 0; 
-         this.y = 0; 
+
          this.step = 101; 
          this.jump = 83;
          this.startX = this.step * 2; 
-         this.startY = (this.jump * 4) - 55; 
+         this.startY = (this.jump * 4) + 55; 
+         this.x = this.startX; 
+         this.y = this.startY; 
          this.sprite = 'images/char-boy.png'
          this.victory = false; 
      }
@@ -79,9 +80,9 @@ Enemy.prototype.update = function(dt) {
              if(this.y === enemy.y && (enemy.x + enemy.step/2 > this.x && enemy.x < this.x + this.step/2)) { 
                 this.reset(); 
              }
-             if(this.y === 55) { 
-                 this.victory = true; 
              }
+             if(this.y === 55) { 
+                this.victory = true; 
          }
      }
      reset() { 
