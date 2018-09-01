@@ -25,14 +25,14 @@ var Engine = (function(global) {
         lastTime, 
         id;
     
-        const modal = document.querySelector('.modal-bg'); 
-        const replay = document.querySelector('.modal-button'); 
+        const modal = document.querySelector('.modal-bg'); // Selects the modal-bg class from index.html and stores in the const modal
+        const replay = document.querySelector('.modal-button'); // Selects the button from index.html and stores in the const replay
 
-        replay.addEventListener('click', function(){
-            modal.classList.toggle('hide'); 
-            player.reset(); 
-            player.victory = false; 
-            win.requestAnimationFrame(main); 
+        replay.addEventListener('click', function(){ // When replay (the button) is clicked, 
+            modal.classList.toggle('hide'); // Toggle modal's classList of hide
+            player.reset(); // Reset the game
+            player.victory = false;  // Reset player's victory 
+            win.requestAnimationFrame(main); // Reload game 
         });
 
     canvas.width = 505;
@@ -66,13 +66,13 @@ var Engine = (function(global) {
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
-        if(player.victory === true) { 
-            win.cancelAnimationFrame(id);
-            modal.classList.remove('hide');
-            modal.classList.add('show'); 
+        if(player.victory === true) { // If/when the player wins, 
+            win.cancelAnimationFrame(id); // Cancel the animation frame
+            modal.classList.remove('hide'); // Remove the class "hide" from modal's class list
+            modal.classList.add('show'); // Add the class "show" to modal's class list
         }
-        else {
-             id = win.requestAnimationFrame(main);
+        else { // Else (meaning the player does NOT win)
+             id = win.requestAnimationFrame(main); // Reload game
         }
        
     }

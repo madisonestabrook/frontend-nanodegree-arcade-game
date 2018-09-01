@@ -1,29 +1,29 @@
 // Enemies our player must avoid
-var Enemy = function(x,y, speed) {
+var Enemy = function(x,y, speed) { // Declares the var Enemy to be equal to the following function 
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-    this.x = 0; 
-    this.y = y + 55; 
-    this.step = 101; 
-    this.speed = speed; 
-    this.boundary = this.step * 5; 
-    this.resetPos = -this.step;
+    this.x = 0; // Sets this.x equal to zero
+    this.y = y + 55; // Sets this.y equal to y plus 55
+    this.step = 101;  // Sets this.step equal to 101
+    this.speed = speed; // Sets this.speed equal to speed
+    this.boundary = this.step * 5;  // Sets this.boundary equal to five times this.step
+    this.resetPos = -this.step; // Sets this.resetPo equal to negative this.step
     // x pos 
     // y pos 
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
+    this.sprite = 'images/enemy-bug.png'; 
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    if(this.x < this.boundary ) { 
-        this.x += this.speed * dt; 
+    if(this.x < this.boundary ) { // If this.x is less than this.boundary, 
+        this.x += this.speed * dt; // Adds this.speed times dt to this.x
     }
-    else { 
-        this.x = this.resetPos; 
+    else { // Else (meaning this.x is NOT less than this.boundary,)
+        this.x = this.resetPos; // Set this.x to this.resetPos
     }
      // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
@@ -35,68 +35,69 @@ Enemy.prototype.update = function(dt) {
     // else 
         // Reset pos to start
 };
- class Hero {
-     constructor() { 
-
-         this.step = 101; 
-         this.jump = 83;
-         this.startX = this.step * 2; 
-         this.startY = (this.jump * 4) + 55; 
-         this.x = this.startX; 
-         this.y = this.startY; 
-         this.sprite = 'images/char-boy.png'
-         this.victory = false; 
+ class Hero { // First step to creating class Hero
+     constructor() { // Creates constructor 
+         this.step = 101; // Sets this.step equal to 101
+         this.jump = 83; // Sets this.jump equal to 83
+         this.startX = this.step * 2;  // Sets this.startX equal to two times this.step
+         this.startY = (this.jump * 4) + 55;  // Sets this.startY equal to four times this.jump plus 55
+         this.x = this.startX;  // Sets this.x equal to this.startX
+         this.y = this.startY; // Sets this.Y equal to this.startY
+         this.sprite = 'images/char-boy.png' // Loads image in game
+         this.victory = false; // Sets this.victory equal to false
      }
-     render() { 
+     render() {  // Start of render() method
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+        // Draws an image
      }
-     handleInput(input) { 
-         switch(input) { 
-             case 'left': 
-            if(this.x > 0) { 
-                this.x -= this.step;
+     handleInput(input) { //Start of handleInput method
+         switch(input) { // Start of switch statement 
+             case 'left': // Case of input equals left
+            if(this.x > 0) { // If this.x is greater than 0, 
+                this.x -= this.step; // Subtract and reassign this.step from this.x
             }
-                break; 
-            case 'up': 
-               if(this.y > this.jump){ 
-                this.y -= this.jump; 
+                break; // Break 
+            case 'up': // Case of input equals up
+               if(this.y > this.jump){  //If this.y is greater than this.jump
+                this.y -= this.jump; // Subtract and reassign this.jump from this.y
                }
-                break;
-            case 'right':
-            if(this.x < this.step * 4){ 
-                this.x += this.step;  
+                break;// Break
+            case 'right': // Case of input equals right 
+            if(this.x < this.step * 4){ // If this.x is les than four times this.step
+                this.x += this.step;  // Add and reassign this.step to this.x
             }
-                break; 
-            case 'down': 
-             if(this.y < this.jump * 4) { 
-                this.y += this.jump; 
+                break; // Break
+            case 'down': // Case of input equals down
+             if(this.y < this.jump * 4) { // If this.y is less than four times this.jump
+                this.y += this.jump; // Add and reassign this.jump to this.y
              }
-                break; 
+                break; // Break
 
          }
      }
-     update() { 
-         for(let enemy of allEnemies) { 
+     update() { // Start of update method
+         for(let enemy of allEnemies) { // For all enemies in allEnemies
              if(this.y === enemy.y && (enemy.x + enemy.step/2 > this.x && enemy.x < this.x + this.step/2)) { 
-                this.reset(); 
+                 // If the logical condition in parentheses is true, 
+                this.reset(); // Reset the game
              }
              }
-             if(this.y === 55) { 
-                this.victory = true; 
+             if(this.y === 55) { // If this.y equals 55 
+                this.victory = true; // The player has won
          }
      }
-     reset() { 
-         this.y = this.startY; 
-         this.x = this.startX; 
+     reset() { // Start of reset method
+         this.y = this.startY; // Resets this.y to y's starting position 
+         this.x = this.startX; // Resets this.x to x's starting position 
      }
  }
 
- const player = new Hero(); 
- const bug1 = new Enemy(-101, 0, 200);
- const bug2 = new Enemy(-101, 83, 300); 
- const bug3 = new Enemy((-101*2.5), 83, 200);  
- const allEnemies = []; 
- allEnemies.push(bug1, bug2, bug3);
+ const player = new Hero(); // Declares the const player to be a new instance of Hero
+ const bug1 = new Enemy(-101, 0, 200); // Declares bug1 to be a new instance of Enemy 
+ const bug2 = new Enemy(-101, 83, 300); // Declares bug2 to be a new instance of Enemy 
+ const bug3 = new Enemy((-101*2.5), 83, 200);  // Declares bug3 to be a new instance of Enemy 
+ const allEnemies = []; // Makes the allEnemies array an empty array
+ allEnemies.push(bug1, bug2, bug3); // Adds the three bugs to the allEnemies array
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -105,7 +106,7 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-
+// PUESDO CODE
  // Hero class
         // Constructor  
 
