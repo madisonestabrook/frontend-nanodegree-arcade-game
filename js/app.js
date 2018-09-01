@@ -24,7 +24,18 @@ Enemy.prototype.update = function(dt) {
     // else 
         // Reset pos to start
 };
+ class Hero {
+     constructor() { 
+         this.x = 0; 
+         this.y = 0; 
+         this.sprite = 'images/char-boy.png'
+     }
+     render() { 
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+     }
+ }
 
+ const player = new Hero(); 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
