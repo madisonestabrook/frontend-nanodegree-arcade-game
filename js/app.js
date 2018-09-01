@@ -1,8 +1,13 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(x,y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-
+    this.x = 0; 
+    this.y = 55; 
+    this.step = 101; 
+    this.speed = speed; 
+    this.boundary = this.step * 5; 
+    this.resetPos = -this.step;
     // x pos 
     // y pos 
 
@@ -14,7 +19,13 @@ var Enemy = function() {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
+    if(this.x < this.boundary ) { 
+        this.x += this.speed * dt; 
+    }
+    else { 
+        this.x = this.resetPos; 
+    }
+     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
 
@@ -65,6 +76,11 @@ Enemy.prototype.update = function(dt) {
  }
 
  const player = new Hero(); 
+ const bug1 = new Enemy(-101, 0, 200);
+ const bug2 = new Enemy(-101, 83, 300); 
+ const bug3 = new Enemy((-101*2.5), 83, 200);  
+ const allEnemies = []; 
+ allEnemies.push(bug1, bug2, bug3);
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
