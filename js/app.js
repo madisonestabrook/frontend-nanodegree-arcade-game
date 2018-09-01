@@ -42,8 +42,9 @@ Enemy.prototype.update = function(dt) {
          this.step = 101; 
          this.jump = 83;
          this.startX = this.step * 2; 
-         this.startY = (this.jump * 5) - 20; 
+         this.startY = (this.jump * 4) - 55; 
          this.sprite = 'images/char-boy.png'
+         this.victory = false; 
      }
      render() { 
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -72,6 +73,20 @@ Enemy.prototype.update = function(dt) {
                 break; 
 
          }
+     }
+     update() { 
+         for(let enemy of allEnemies) { 
+             if(this.y === enemy.y && (enemy.x + enemy.step/2 > this.x && enemy.x < this.x + this.step/2)) { 
+                this.reset(); 
+             }
+             if(this.y === 55) { 
+                 this.victory = true; 
+             }
+         }
+     }
+     reset() { 
+         this.y = this.startY; 
+         this.x = this.startX; 
      }
  }
 
