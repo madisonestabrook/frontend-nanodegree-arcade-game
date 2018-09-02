@@ -10,4 +10,4 @@ I would like thank the following:
 - Micheal Jackson for being my Lead Editor and SME on the FEND Book
 - Matt for his very helpful walk-through 
 ##Dependencies##
-This project is written in vanilla JavaScript ES6 code. This means use the latest version of a major browser when playing this project's game. I suggest using the latest version of Chrome. To use this game, use the arrow functions on your keyboard. 
+This project is written in vanilla JavaScript ES6 code. This means use the latest version of a major browser when playing this project's game. I suggest using the latest version of Chrome. To use this game, use the arrow functions on your keyboard after opening index.html in the latest version of a major browser. 

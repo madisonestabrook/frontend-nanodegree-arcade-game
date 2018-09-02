@@ -58,7 +58,7 @@ Enemy.prototype.update = function(dt) {
             }
                 break; // Break 
             case 'up': // Case of input equals up
-               if(this.y > this.jump){  //If this.y is greater than this.jump
+               if(this.y > 0){  //If this.y is greater than this.jump
                 this.y -= this.jump; // Subtract and reassign this.jump from this.y
                }
                 break;// Break
@@ -82,7 +82,7 @@ Enemy.prototype.update = function(dt) {
                 this.reset(); // Reset the game
              }
              }
-             if(this.y === 55) { // If this.y equals 55 
+             if(this.y === (55+5)) { // If this.y equals 66
                 this.victory = true; // The player has won
          }
      }
