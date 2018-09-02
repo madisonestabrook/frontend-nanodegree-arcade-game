@@ -82,7 +82,7 @@ Enemy.prototype.update = function(dt) {
                 this.reset(); // Reset the game
              }
              }
-             if(this.y === (55+5)) { // If this.y equals 66
+             if(this.y === (-28)) { // If this.y equals negative 28, 
                 this.victory = true; // The player has won
          }
      }
